@@ -48,7 +48,7 @@ INSERT INTO flashcard_statuses
 VALUES(3, 'Right');
 /
 CREATE TABLE flashcard_categorychains(
-  chainId INT PRIMARY KEY,
+  groupId INT PRIMARY KEY,
   userId INT,
   parentCategoryId INT,
   subCategoryId INT,
@@ -62,13 +62,13 @@ CREATE TABLE flashcards(
   backId INT NOT NULL,
   statusId INT NOT NULL,
   typeId INT NOT NULL,
-  chainId INT NOT NULL,
+  groupId INT NOT NULL,
   numberOfTimesStudied INT DEFAULT(0) NOT NULL,  
   FOREIGN KEY (frontId) REFERENCES flashcard_sides (sideId),
   FOREIGN KEY (backId) REFERENCES flashcard_sides (sideId),
   FOREIGN KEY (statusId) REFERENCES flashcard_statuses (statusId),
   FOREIGN KEY (typeId) REFERENCES flashcard_types (typeId),
-  FOREIGN KEY (chainId) REFERENCES flashcard_categorychains(chainId),
-  UNIQUE (frontId, backId, chainId)
+  FOREIGN KEY (groupId) REFERENCES flashcard_categorychains(groupId),
+  UNIQUE (frontId, backId, groupId)
 );
 /
