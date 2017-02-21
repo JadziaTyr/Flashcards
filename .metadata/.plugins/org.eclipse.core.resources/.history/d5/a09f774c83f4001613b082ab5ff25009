@@ -1,0 +1,26 @@
+package com.revature.services;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.revature.dao.DAO;
+import com.revature.models.Flashcard;
+
+@Service(value="flashcardService") //from tx annotation
+public class FlashcardService
+{
+	private DAO dao;
+	
+	@Transactional //this method is all or nothing
+	public void addFlashcard(Flashcard fc)
+	{
+		dao.insertFlashcard(fc);
+		dao.insertFlashcard(fc);
+		dao.insertFlashcard(fc);
+	}
+	
+	public void findAllFlashcards()
+	{
+		dao.retrieveAllFlashcards();
+	}
+}

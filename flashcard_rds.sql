@@ -1,5 +1,5 @@
 DROP TABLE flashcards;
-DROP TABLE flashcard_subcategories;
+DROP TABLE flashcard_categorychains;
 DROP TABLE flashcard_sides;
 DROP TABLE flashcard_categories;
 DROP TABLE flashcard_statuses;
@@ -47,13 +47,13 @@ VALUES(2, 'Wrong');
 INSERT INTO flashcard_statuses
 VALUES(3, 'Right');
 /
-CREATE TABLE flashcard_subcategories(
-  packageId INT PRIMARY KEY,
+CREATE TABLE flashcard_categorychains(
+  chainId INT PRIMARY KEY,
   userId INT,
-  categoryId INT,
-  subcategoryId INT,
+  parentCategoryId INT,
+  subCategoryId INT,
   publicBit INT DEFAULT(0) CHECK (publicBit = 0 OR publicBit = 1) NOT NULL,
-  UNIQUE (userId, categoryId, subcategoryId)  
+  UNIQUE (userId, parentCategoryId, subCategoryId)  
 );
 /
 CREATE TABLE flashcards(
@@ -62,13 +62,13 @@ CREATE TABLE flashcards(
   backId INT NOT NULL,
   statusId INT NOT NULL,
   typeId INT NOT NULL,
-  packageId INT NOT NULL,
+  chainId INT NOT NULL,
   numberOfTimesStudied INT DEFAULT(0) NOT NULL,  
   FOREIGN KEY (frontId) REFERENCES flashcard_sides (sideId),
   FOREIGN KEY (backId) REFERENCES flashcard_sides (sideId),
   FOREIGN KEY (statusId) REFERENCES flashcard_statuses (statusId),
   FOREIGN KEY (typeId) REFERENCES flashcard_types (typeId),
-  FOREIGN KEY (packageId) REFERENCES flashcard_subcategories (packageId),
-  UNIQUE (frontId, backId, packageId)
+  FOREIGN KEY (chainId) REFERENCES flashcard_categorychains(chainId),
+  UNIQUE (frontId, backId, chainId)
 );
 /

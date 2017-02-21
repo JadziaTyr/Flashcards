@@ -1,0 +1,45 @@
+package com.revature.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table
+@Component
+public class FlashcardStatus {
+	@Id
+	@Column(name="typeId")
+	private int statusId;
+	@Column(name="text")
+	private String text;
+	public FlashcardStatus() {
+		super();
+		this.statusId = -1;
+		this.text = "";
+	}
+	public FlashcardStatus(int statusId, String text) {
+		super();
+		this.statusId = statusId;
+		this.text = text;
+	}
+	@Override
+	public String toString() {
+		return "FlashcardType [statusId=" + statusId + ", text=" + text + "]";
+	}
+	public int getStatusId() {
+		return statusId;
+	}
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
+	}
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+}

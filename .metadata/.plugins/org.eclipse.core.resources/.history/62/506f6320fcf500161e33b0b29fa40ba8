@@ -1,0 +1,18 @@
+package com.revature.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.revature.dao.DAO;
+
+@Component
+public class Service 
+{
+	@Autowired
+	DAO dao;
+	
+	public boolean authorizeLogin()
+	{
+		return false;
+	}
+}

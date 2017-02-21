@@ -1,0 +1,23 @@
+package com.revature.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.revature.models.Flashcard;
+
+@Repository //says I am a BEAN && I will contact the database
+public class FlashcardDAO implements DAO
+{
+	private SessionFactory sessionFactory;
+	
+	public void insertFlashcard(Flashcard fc)
+	{
+		
+	}
+	
+	public List<Flashcard> retrieveAllFlashcards()
+	{
+		return null;
+	}
+}

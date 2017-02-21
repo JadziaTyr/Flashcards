@@ -1,0 +1,67 @@
+package com.revature.controllers;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.revature.models.User;
+import com.revature.services.Service;
+
+@Controller
+public class InviteUserController {
+	
+	final static Logger logger = Logger.getLogger(InviteUserController.class);
+
+	@Autowired
+	Service service;
+	
+	@RequestMapping(value="/invite_friend")
+	public String loginFriend(ModelMap map){
+		User user = new User();
+		map.addAttribute("user", user); //request scope
+		return "InviteUser";
+	}
+	
+	@RequestMapping(value="/invite_admin")
+	public String loginAdmin(ModelMap map){
+		User user = new User();
+		map.addAttribute("user", user); //request scope
+		return "InviteAdministrator";
+	}
+	
+	@RequestMapping(value="/invite_friend", method=RequestMethod.POST)
+	public String loginFriendPost(@Valid User user, ModelMap map){
+		boolean validCreation = service.createUser(user);
+		
+		if(validCreation)
+		{
+			map.addAttribute("errorMessage", "Successful Invite");
+			return "InviteUser";
+		}
+		map.addAttribute("errorMessage", "Invite Malfunction");
+		return "InviteUser";
+	}
+	
+	@RequestMapping(value="/invite_admin", method=RequestMethod.POST)
+	public String loginAdminPost(@Valid User user, HttpServletRequest req, ModelMap map){
+		boolean validCreation = service.createUser(user);
+		
+		String role = req.getParameter("adminCheckBox");
+		System.out.println(role);
+		
+		System.out.println(user);
+		if(validCreation)
+		{
+			map.addAttribute("errorMessage", "Successful Invite");
+			return "InviteAdministrator";
+		}
+		map.addAttribute("errorMessage", "Invite Malfunction");
+		return "InviteAdministrator";
+	}
+}

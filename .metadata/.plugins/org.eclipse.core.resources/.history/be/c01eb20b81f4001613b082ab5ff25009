@@ -1,0 +1,18 @@
+package com.revature.dao;
+
+import java.util.List;
+
+import com.revature.models.Flashcard;
+
+public class FlashcardDAO
+{
+	public void insertFlashcard()
+	{
+		
+	}
+	
+	public List<Flashcard> retrieveAllFlashcards()
+	{
+		return null;
+	}
+}

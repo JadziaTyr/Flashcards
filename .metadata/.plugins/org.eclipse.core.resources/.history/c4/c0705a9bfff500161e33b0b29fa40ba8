@@ -1,0 +1,18 @@
+package com.revature.transactions;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.revature.dao.DAO;
+
+@Component("transactions")
+public class Transactions {
+
+	@Autowired
+	DAO dao;
+	
+	public User retrieveUserByUsernameAndPassword()
+	{
+		return 
+	}
+}

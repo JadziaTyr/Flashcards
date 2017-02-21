@@ -1,0 +1,18 @@
+package com.revature.controllers;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+public class HomeController {
+	@RequestMapping(value="/home")
+	public String loginGET(){
+		System.out.println("home catch all method");
+		return "Login";
+	}
+	
+	@RequestMapping(value="/home", method=RequestMethod.POST)
+	public String loginPost(){
+		System.out.println("home Post method");
+		return "redirect:home";
+	}
+}

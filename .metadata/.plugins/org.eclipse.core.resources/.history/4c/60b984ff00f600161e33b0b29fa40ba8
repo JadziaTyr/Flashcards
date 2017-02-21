@@ -1,0 +1,42 @@
+package com.revature.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class FlashcardStatus {
+	@Id
+	@Column(name="typeId")
+	private int typeId;
+	@Column(name="text")
+	private String text;
+	public FlashcardStatus() {
+		super();
+		this.typeId = -1;
+		this.text = "";
+	}
+	public FlashcardStatus(int typeId, String text) {
+		super();
+		this.typeId = typeId;
+		this.text = text;
+	}
+	@Override
+	public String toString() {
+		return "FlashcardType [typeId=" + typeId + ", text=" + text + "]";
+	}
+	public int getTypeId() {
+		return typeId;
+	}
+	public void setTypeId(int typeId) {
+		this.typeId = typeId;
+	}
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+}

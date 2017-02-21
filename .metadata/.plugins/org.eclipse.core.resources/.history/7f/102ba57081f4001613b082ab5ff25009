@@ -1,0 +1,23 @@
+package com.revature.services;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.revature.dao.DAO;
+
+@Service //from txannotation
+public class FlashcardService
+{
+	private DAO dao;
+	
+	@Transactional
+	public void addFlashcard()
+	{
+		dao
+	}
+	
+	public void findAllFlashcards()
+	{
+		
+	}
+}

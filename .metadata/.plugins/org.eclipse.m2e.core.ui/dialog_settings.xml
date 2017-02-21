@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
 			<item value="com.revature"/>
@@ -7,7 +9,14 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="Flashcards"/>
+			<item value="Feb_16_SpringORM"/>
+			<item value="FairyTale"/>
+			<item value="FairytaleLogin"/>
+			<item value="Feb_15_TimerAspect"/>
+			<item value="Feb_15_HackingMyself"/>
+			<item value="Feb_15_MVC"/>
+			<item value="Feb_15_Employee"/>
+			<item value="Feb_15_Spring"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -21,8 +30,6 @@
 			<item value="0.0.1-SNAPSHOT"/>
 		</list>
 	</section>
-	<section name="org.eclipse.m2e.core.pom.dependencies">
-	</section>
 	<section name="org.eclipse.m2e.core.pom.overview">
 		<list key="ciManagementUrl">
 		</list>
@@ -31,6 +38,25 @@
 		<list key="issueManagementSystem">
 		</list>
 		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\deada\my_git_repos\1701_jan9_java_steven\Spring\Jadzia_Kephart_Code\Feb_15_TimerAspect"/>
+			<item value="C:\Users\deada\my_git_repos\Flashcards\Flashcards"/>
+			<item value="C:\Users\deada\my_git_repos\1701_jan9_java_steven\Spring\AutowiredExample"/>
+			<item value="C:\Users\deada\my_git_repos\1701_jan9_java_steven\Spring\AutowiredAnnotationExample"/>
+			<item value="C:\Users\deada\my_git_repos\1701_jan9_java_steven\Project 1 ERS\Reimbursement"/>
+			<item value="C:\Users\deada\my_git_repos\1701_jan9_java_steven\Spring\bean-lifecycle"/>
+			<item value="C:\Users\deada\my_git_repos\1701_jan9_java_steven\Spring\Jadzia_Kephart_Code\Feb_14_Spring"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
 		</list>
 	</section>
 	<section name="MavenProjectWizardArchetypePage">
@@ -45,6 +71,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\deada\my_git_repos\1701_jan9_java_steven\Spring\Jadzia_Kephart_Code\Feb_15_Employee"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

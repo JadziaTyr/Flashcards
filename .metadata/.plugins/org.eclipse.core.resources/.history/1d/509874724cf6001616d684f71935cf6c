@@ -1,0 +1,18 @@
+package com.revature.controllers;
+
+import javax.validation.ConstraintViolationException;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@Controller
+public class ExceptionController
+{
+	@ExceptionHandler(ConstraintViolationException.class)
+	public boolean constraintViolation()
+	{
+		System.out.println("in violation");
+		return false;
+	}
+
+}

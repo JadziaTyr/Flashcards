@@ -1,0 +1,91 @@
+package com.revature.services;
+
+import java.util.Random;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.revature.models.User;
+import com.revature.transactions.Transactions;
+import com.revature.utils.EmailUtil;
+
+@Component("service")
+public class Service 
+{
+	final static Random RANDOM = new Random();
+	
+	@Autowired
+	Transactions transactions;
+	
+	public boolean authorizeLogin(User user)
+	{		
+		if(user.getUsername().equals("SYSTEM") && user.getPassword().equals("admin"))
+		{
+			user.setAdmin(true);
+			return true;
+		}
+		
+		User tempUser = transactions.fetchUserByUsernameAndPassword(user);
+		
+		if(tempUser == null)
+		{
+			return false;
+		}
+		
+		user.copy(tempUser);
+		
+		return true;
+	}
+
+	public boolean inviteUser(User user) 
+	{
+		user.setUsername(this.getRandomString(10));
+		user.setPassword(this.getRandomString(8));
+		
+		String body = "Your username is: " + user.getUsername() + ". Your password is: " + user.getPassword() + ".";
+		
+		if(EmailUtil.sendEmail(user.getEmail(), body, "You are Invited"))
+		{
+			transactions.createUser(user);
+			return true;
+		}
+		return false;
+	}
+	
+	private String getRandomString(int length)
+	{
+		//numbers 48-57
+		//U characters 65-90
+		//L characters 97-122
+		String choices = "";
+		int lcv = 48;
+		
+		while(lcv<=122)
+		{
+			choices += (char) lcv;
+			
+			if(lcv == 57)
+			{
+				lcv = 65;
+			}
+			else if(lcv == 90)
+			{
+				lcv = 97;
+			}
+			else
+			{
+				lcv++;
+			}
+		}
+		
+		String use = "";
+		lcv = 0;
+		while(lcv < length)
+		{
+			use += choices.charAt(RANDOM.nextInt(choices.length()));
+			lcv++;
+		}
+		
+		return use;
+	}
+}

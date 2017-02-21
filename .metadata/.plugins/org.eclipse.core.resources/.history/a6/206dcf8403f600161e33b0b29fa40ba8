@@ -1,0 +1,28 @@
+package com.revature.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.revature.services.Service;
+
+@Controller
+
+public class LoginController {
+	
+	@Autowired
+	Service service;
+	
+	@RequestMapping(value="/login")
+	public String loginGET(){
+		System.out.println("login catch all method");
+		return "Login";
+	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String loginPost(){
+		System.out.println("login Post method");
+		return "redirect:home";
+	}
+}

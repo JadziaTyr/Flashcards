@@ -1,0 +1,44 @@
+package com.revature.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.revature.models.User;
+import com.revature.services.AuthService;
+
+@Controller //implicitly @Component
+public class LoginController
+{
+	@Autowired
+	AuthService authService;
+	
+	//catch all
+	@RequestMapping("/login")
+	public String loginEverything(ModelMap modelMap)
+	{
+		System.out.println("In Login Controller login catch all()");
+		
+		User user = new User();
+		modelMap.addAttribute("user", user); //request scope
+		return "Login";
+	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String loginPOST(User user, ModelMap modelMap)
+	{
+		System.out.println("In Login Controller loginPOST()");
+		System.out.println(user);
+		
+		if(authService.auth(user) == null)
+		{
+			modelMap.addAttribute("errorMessage", "Username/Password incorrect");
+			return "Login";
+		}
+		
+		return "redirect:home";
+	}
+}

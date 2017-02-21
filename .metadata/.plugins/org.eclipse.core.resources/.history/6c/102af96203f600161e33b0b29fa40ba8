@@ -1,0 +1,19 @@
+package com.revature.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.revature.transactions.Transactions;
+
+@Component
+public class Service 
+{
+	@Autowired
+	Transactions transactions;
+	
+	public boolean authorizeLogin()
+	{
+		
+		return false;
+	}
+}

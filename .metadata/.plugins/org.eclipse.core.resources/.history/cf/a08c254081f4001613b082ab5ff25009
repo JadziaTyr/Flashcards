@@ -1,0 +1,17 @@
+package com.revature.services;
+
+import org.springframework.stereotype.Service;
+
+@Service //from txannotation
+public class FlashcardService
+{
+	public void addFlashcard()
+	{
+		
+	}
+	
+	public void findAllFlashcards()
+	{
+		
+	}
+}

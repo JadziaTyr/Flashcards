@@ -1,0 +1,24 @@
+package com.revature.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="flashcard_users")
+public class User {
+	
+	@Id
+	@SequenceGenerator
+	@GeneratedValue
+	@Column(name="userId")
+	private int userId;
+	
+	@Column(name="username", unique = true)
+	private String username;
+	
+	
+}
